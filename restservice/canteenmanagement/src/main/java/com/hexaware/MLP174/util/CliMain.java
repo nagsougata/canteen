@@ -35,8 +35,8 @@ class CliMain {
     System.out.println("6. Show customers");
     System.out.println("7. Show wallet");
     System.out.println("8. Place Order");
-    System.out.println("9. accept reject");
-    System.out.println("10. cancel order");
+    System.out.println("9. Accept or Reject order");
+    System.out.println("10. Cancel order");
     System.out.println("11. Exit");
     mainMenuDetails();
   }
@@ -226,7 +226,7 @@ class CliMain {
     }
   }
   private void pendingOrders() {
-    System.out.println("Order history:\n1. Customer Orders\n2. Vendor Orders");
+    System.out.println("Order history:\n1. Customer Pending Orders\n2. Vendor Pending Orders");
     int choice = option.nextInt();
     int count = 0;
     if (choice == 1) {
@@ -301,10 +301,36 @@ class CliMain {
  * showFullMenu method  display the menu item stored in database.
  */
   private void showFullWallet() {
-    Wallet[] wallet = WalletFactory.showWallet();
-    System.out.println("walid waltype walamount  cusid");
-    for (Wallet m : wallet) {
-      System.out.println(m.getWalletId() + " " + m.getWalletType() + " " + m.getWalletAmount() + " " + m.getCustomerId());
+    System.out.println("Enter customer Name");
+    int count = 0;
+    String username = option.next();
+    Console console = System.console();
+    char[] pwd = console.readPassword("Enter Customer password");
+    String password = String.valueOf(pwd);
+    //String password = option.next();
+    try {
+      count = CustomerFactory.validateCustomer(username, password);
+    } catch (IllegalArgumentException e) {
+      System.out.println(e.getMessage());
+      mainMenu();
+    }
+    if (count == 1) {
+      Customer customer = CustomerFactory.findByCustomerName(username);
+      int custId = customer.getCustomerId();
+      Wallet[] wallet = WalletFactory.showWallet(custId);
+      System.out.println("-------------------------------------------------------------------"
+          + "---------------------------------------------------------------------------------");
+      System.out.printf("%-15s %-15s %-15s %-15s", "WalletId", "WalletType",
+          "WalletAmount", "CustomerId");
+      System.out.println();
+      System.out.println("--------------------------------------------------------------------"
+          + "-----------------------------------------------------------------------");
+      for (Wallet m : wallet) {
+        System.out.println(m);
+        System.out.println();
+      }
+    } else {
+      System.out.println("Invalid Credentials...");
     }
   }
 /**
@@ -312,10 +338,9 @@ class CliMain {
  */
   private void showFullMenu() {
     Menu[] menu = MenuFactory.showMenu();
-    System.out.println("Menu_Id Category name Quantity Cost Calories reviews");
+    System.out.println("Menu_Id  Category     name         Quantity   Cost   rating");
     for (Menu m : menu) {
-      System.out.println(m.getMenuId() + " " + m.getMenuCat() + " " + m.getMenuItem()
-          + " " + m.getMenuQuantity() + " " + m.getMenuCost() + " " + m.getMenuCalories() + " " + m.getMenuReviews());
+      System.out.println(m);
     }
   }
   /**
@@ -349,11 +374,9 @@ class CliMain {
  */
   private void showFullOrders() {
     Orders[] order = OrderFactory.showOrder();
-    System.out.println("vendorid name username number email password");
+    System.out.println("orderId custId venId menuId status        comments   amount   date   quantity  wallettype");
     for (Orders m : order) {
-      System.out.println(m.getOrderId() + " " + m.getCustomerId() + " " + m.getVendorId()
-          + " " + m.getMenuId() + " " + m.getOrderStatus() + " " + m.getOrderComments() + " " + m.getOrderTotalamount()
-          + " " + m.getOrderDate() + " " + m.getOrderQuantity());
+      System.out.println(m);
     }
   }
    /**
@@ -385,4 +408,6 @@ class CliMain {
     mainObj.mainMenu();
   }
 }
+
+
 

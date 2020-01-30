@@ -30,3 +30,4 @@ public interface CustomerDAO {
   @SqlQuery("SELECT COUNT(*) FROM CUSTOMER WHERE CUS_NAME =:customerName AND CUS_PASSWORD=:customerPassword")
      int authenticate(@Bind("customerName") String customerName, @Bind("customerPassword") String customerPassword);
 }
+

@@ -17,3 +17,4 @@ public enum WalletType {
      */
     PAYTM, GOOGLE_PAY, PHONE_PE
 }
+

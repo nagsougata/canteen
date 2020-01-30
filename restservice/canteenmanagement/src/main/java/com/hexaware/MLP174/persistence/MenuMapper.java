@@ -27,7 +27,8 @@ public class MenuMapper implements ResultSetMapper<Menu> {
     String category = rs.getString("MEN_CAT");
     MenuCat mcat = MenuCat.valueOf(category);
     return new Menu(rs.getInt("MEN_ID"), mcat, rs.getString("Men_Item"),
-    rs.getInt("Men_Quantity"), rs.getInt("Men_Cost"), rs.getInt("Men_Calories"),
-    rs.getString("Men_Reviews"));
+    rs.getInt("Men_Quantity"), rs.getInt("Men_Cost"), rs.getInt("Men_Rating"));
   }
 }
+
+

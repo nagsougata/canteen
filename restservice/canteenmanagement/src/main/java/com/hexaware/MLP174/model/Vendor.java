@@ -1,5 +1,6 @@
 package com.hexaware.MLP174.model;
 import java.util.Objects;
+
 /**
  * Menu class used to display menu information.
  * @author hexware
@@ -25,12 +26,9 @@ public class Vendor {
   /**
  * vendorEmail to store email.
  */
-  private String vend
-  orEmail;
+  private String vendorEmail;
   /**
-  
- * vendorPassword to 
- store password.
+ * vendorPassword to store password.
  */
   private String vendorPassword;
   /**
@@ -66,14 +64,19 @@ public class Vendor {
       return false;
     }
     Vendor vendor = (Vendor) obj;
-    if (Objects.equals(vendorId, vendor.vendorId)) {
+    if (Objects.equals(vendorId, vendor.vendorId)
+        && Objects.equals(vendorName, vendor.vendorName)
+        && Objects.equals(vendorUsername, vendor.vendorUsername)
+        && Objects.equals(vendorNumber, vendor.vendorNumber)
+        && Objects.equals(vendorEmail, vendor.vendorEmail)
+        && Objects.equals(vendorPassword, vendor.vendorPassword)) {
       return true;
     }
     return false;
   }
   @Override
     public final int hashCode() {
-    return Objects.hash(vendorId);
+    return Objects.hash(vendorId, vendorName, vendorUsername, vendorNumber, vendorEmail, vendorPassword);
   }
   @Override
   public final String toString() {
@@ -89,7 +92,7 @@ public class Vendor {
     /**
      * @param argVendorId gets the food id.
      */
-  public final void setvendorId(final int argVendorId) {
+  public final void setVendorId(final int argVendorId) {
     this.vendorId = argVendorId;
   }
   /**
@@ -101,7 +104,7 @@ public class Vendor {
   /**
      * @param argVendorName gets the NAME.
      */
-  public final void setvendorName(final String argVendorName) {
+  public final void setVendorName(final String argVendorName) {
     this.vendorName = argVendorName;
   }
     /**
@@ -113,7 +116,7 @@ public class Vendor {
   /**
    * @param argVendorUsername gets the username.
    */
-  public final void setvendorUsername(final String argVendorUsername) {
+  public final void setVendorUsername(final String argVendorUsername) {
     this.vendorUsername = argVendorUsername;
   }
    /**
@@ -125,7 +128,7 @@ public class Vendor {
   /**
    * @param argVendorNumber gets the number.
    */
-  public final void setvendorNumber(final String argVendorNumber) {
+  public final void setVendorNumber(final String argVendorNumber) {
     this.vendorNumber = argVendorNumber;
   }
   /**
@@ -137,7 +140,7 @@ public class Vendor {
   /**
    * @param argVendorEmail gets the email address.
    */
-  public final void setvendorEmail(final String argVendorEmail) {
+  public final void setVendorEmail(final String argVendorEmail) {
     this.vendorEmail = argVendorEmail;
   }
   /**
@@ -149,7 +152,7 @@ public class Vendor {
   /**
    * @param argVendorPassword gets the password.
    */
-  public final void setvendorPassword(final String argVendorPassword) {
+  public final void setVendorPassword(final String argVendorPassword) {
     this.vendorPassword = argVendorPassword;
   }
 }

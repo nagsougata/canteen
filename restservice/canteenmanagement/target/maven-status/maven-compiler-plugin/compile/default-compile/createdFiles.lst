@@ -9,12 +9,10 @@ com\hexaware\MLP174\util\FTPApplication.class
 com\hexaware\MLP174\persistence\MenuMapper.class
 com\hexaware\MLP174\util\CORSFilter.class
 com\hexaware\MLP174\model\Wallet.class
-com\hexaware\MLP174\util\VendorRest.class
 com\hexaware\MLP174\model\WalletType.class
 com\hexaware\MLP174\persistence\VendorMapper.class
 com\hexaware\MLP174\persistence\DbConnection.class
 com\hexaware\MLP174\util\MenuRest.class
-com\hexaware\MLP174\model\FoodStatus.class
 com\hexaware\MLP174\factory\VendorFactory.class
 com\hexaware\MLP174\persistence\OrderDAO.class
 com\hexaware\MLP174\persistence\VendorDAO.class

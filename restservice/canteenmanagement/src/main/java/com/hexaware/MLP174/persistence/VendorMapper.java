@@ -30,3 +30,4 @@ public class VendorMapper implements ResultSetMapper<Vendor> {
     rs.getString("VEN_PWD"));
   }
 }
+

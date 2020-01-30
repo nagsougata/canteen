@@ -91,19 +91,29 @@ public class Orders {
       return false;
     }
     Orders order = (Orders) obj;
-    if (Objects.equals(orderId, order.orderId)) {
+    if (Objects.equals(orderId, order.orderId)
+        && Objects.equals(customerId, order.customerId)
+        && Objects.equals(vendorId, order.vendorId)
+        && Objects.equals(menuId, order.menuId)
+        && Objects.equals(orderStatus, order.orderStatus)
+        && Objects.equals(orderComments, order.orderComments)
+        && Objects.equals(orderTotalamount, order.orderTotalamount)
+        && Objects.equals(orderDate, order.orderDate)
+        && Objects.equals(orderQuantity, order.orderQuantity)
+        && Objects.equals(walletType, order.walletType)) {
       return true;
     }
     return false;
   }
   @Override
     public final int hashCode() {
-    return Objects.hash(orderId);
+    return Objects.hash(orderId, customerId, vendorId,
+     menuId,  orderStatus, orderComments, orderTotalamount, orderDate, orderQuantity, walletType);
   }
   @Override
     public final String toString() {
-    return String.format("%15s %15s %15s %15s %15s %15s %15s %15s %15s", orderId, customerId, vendorId,
-     menuId,  orderStatus, orderComments, orderTotalamount, orderDate, orderQuantity);
+    return String.format("%5s %5s %5s %5s %10s %15s %7s %10s %5s %10s", orderId, customerId, vendorId,
+     menuId,  orderStatus, orderComments, orderTotalamount, orderDate, orderQuantity, walletType);
   }
     /**
      * @return this food ID.

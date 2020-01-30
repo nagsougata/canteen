@@ -50,14 +50,17 @@ public class Wallet {
       return false;
     }
     Wallet wallet = (Wallet) obj;
-    if (Objects.equals(walletId, wallet.walletId)) {
+    if (Objects.equals(walletId, wallet.walletId)
+        && Objects.equals(walletType, wallet.walletType)
+        && Objects.equals(walletAmount, wallet.walletAmount)
+        && Objects.equals(customerId, wallet.customerId)) {
       return true;
     }
     return false;
   }
   @Override
     public final int hashCode() {
-    return Objects.hash(walletId);
+    return Objects.hash(walletId, walletType, walletAmount, customerId);
   }
     /**
      * @return this food ID.
@@ -106,5 +109,9 @@ public class Wallet {
      */
   public final void setCustomerId(final int argCustomerId) {
     this.customerId = argCustomerId;
+  }
+  @Override
+    public final String toString() {
+    return String.format("%5s %15s %15s %15s", walletId, walletType, walletAmount, customerId);
   }
 }

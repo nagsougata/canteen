@@ -5,6 +5,7 @@ import java.util.List;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import com.hexaware.MLP174.model.Orders;
 import com.hexaware.MLP174.model.Menu;
+import com.hexaware.MLP174.model.Customer;
 import com.hexaware.MLP174.model.Wallet;
 import com.hexaware.MLP174.model.WalletType;
 import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
@@ -56,6 +57,13 @@ public interface OrderDAO {
   @SqlQuery("Select * from MENU WHERE MEN_ID=:menId")
     @Mapper(MenuMapper.class)
     Menu findByMenuId(@Bind("menId") int menId);
+    /**
+     * @param cusDOB for Order details.
+     * @return the all the Order single record.
+     */
+     @SqlQuery("Select * from CUSTOMER WHERE CUS_ID=:customerId")
+    @Mapper(CustomerMapper.class)
+    Customer findByCustomerId(@Bind("customerId") int customerId);
     /**
      * @param ordId for Order details.
      * @return the all the Order single record.

@@ -1,29 +1,33 @@
 package com.hexaware.MLP174.model;
 
-//import com.hexaware.MLP174.persistence.MenuDAO;
-//import com.hexaware.MLP174.factory.MenuFactory;
 import static org.junit.Assert.assertEquals;
-//import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-//import static org.junit.Assert.assertNotNull;
+
+
+ import com.hexaware.MLP174.persistence.VendorDAO;
+ import com.hexaware.MLP174.factory.VendorFactory;
+// import static org.junit.Assert.assertEquals;
+// import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 //import static org.junit.Assert.assertNull;
 
 import java.text.ParseException;
 import org.junit.Test;
 import org.junit.Before;
-//import org.junit.runner.RunWith;
-//import mockit.Expectations;
-//import mockit.MockUp;
-//import mockit.Mocked;
-//import mockit.Mock;
-//import mockit.integration.junit4.JMockit;
-//import java.util.ArrayList;
+import org.junit.runner.RunWith;
+
+ import mockit.Expectations;
+ import mockit.MockUp;
+ import mockit.Mocked;
+ import mockit.Mock;
+ import mockit.integration.junit4.JMockit;
+ import java.util.ArrayList;
 
 /**
- * Test class for Menu.
+ * Test class for Vendor.
  */
-//@RunWith(JMockit.class)
+@RunWith(JMockit.class)
 public class VendorTest {
     /**
    * setup method.
@@ -36,113 +40,114 @@ public class VendorTest {
    * Tests the equals/hashcode methods of the employee class.
    */
   @Test
-   public final void testEquals() {
-    Menu m1 = null;
-    Menu m2 = new Vendor(1,"Leela",100,"LEELA@GMAIL.COM",9999988888,"T.NAGER,CHENNAI","200","leela1");
-    Menu m3 = new Vendor(1,"Leela",100,"LEELA@GMAIL.COM",9999988888,"T.NAGER,CHENNAI","200","leela1");
+  public final void testVendor() {
+    Vendor m = new Vendor();
+    assertNotNull(m);
+    Vendor vendor = new Vendor(2, "Yogesh", "yogesh2", "9876213217", "YOGESH@GMAIL.COM", "1234A");
+    assertEquals(2, vendor.getVendorId());
+    assertEquals("Yogesh", vendor.getVendorName());
+    assertEquals("yogesh2", vendor.getVendorUsername());
+    assertEquals("9876213217", vendor.getVendorNumber());
+    assertEquals("YOGESH@GMAIL.COM", vendor.getVendorEmail());
+    assertEquals("1234A", vendor.getVendorPassword());
+
+    m.setVendorId(2);
+    m.setVendorName("Yogesh");
+    m.setVendorUsername("yogesh2");
+    m.setVendorNumber("9876213217");
+    m.setVendorEmail("YOGESH@GMAIL.COM");
+    m.setVendorPassword("1234A");
+
+    assertEquals(2, m.getVendorId());
+    assertEquals("Yogesh", m.getVendorName());
+    assertEquals("yogesh2", m.getVendorUsername());
+    assertEquals("9876213217", m.getVendorNumber());
+    assertEquals("YOGESH@GMAIL.COM", m.getVendorEmail());
+    assertEquals("1234A", m.getVendorPassword());
+  }
+  /**
+   * Tests for equals.
+   */
+  @Test
+  public final void testEquals() {
+    Vendor m = new Vendor();
+    Vendor m1 = null;
+    Vendor m2 = new Vendor(2, "Yogesh", "yogesh2", "9876213217", "YOGESH@GMAIL.COM", "1234A");
+    Vendor m3 = new Vendor(2, "Yogesh", "yogesh2", "9876213217", "YOGESH@GMAIL.COM", "1234A");
     assertFalse(m2.equals(m1));
     assertTrue(m2.equals(m3));
     assertEquals(m2.hashCode(), m3.hashCode());
     Vendor vendor = new Vendor();
     assertFalse(m2.equals(vendor));
+    assertFalse(m.equals(m2));
   }
-   /**
-   * Tests the toString() methods of the Menu class.
+  /**
+   * Tests the toString() methods of the Vendor class.
    * @throws ParseException for date format validation.
    */
   @Test
   public final void testToString() throws ParseException {
-    Customer c = new Customer(1, "Leela",100,"LEELA@GMAIL.COM",9999988888,"T.NAGER,CHENNAI","200","leela1");
-    String result = String.format("%15s %15s %15s %15s %15s %15s %15s",
-          m.getCustomerId(), m.getMenuCat(), m.getMenuItem(), m.getMenuQuantity(),
-          m.getMenuCost(), m.getMenuCalories(), m.getMenuReviews());
+    Vendor m = new Vendor(2, "Yogesh", "yogesh2", "9876213217", "YOGESH@GMAIL.COM", "1234A");
+    String result = String.format("%15s %15s %15s %15s %15s %15s",
+          m.getVendorId(), m.getVendorName(), m.getVendorUsername(), m.getVendorNumber(),
+          m.getVendorEmail(), m.getVendorPassword());
     assertEquals(result, m.toString());
   }
-   /**
-   * Tests the equals/hashcode methods of the employee class.
-   */
-  @Test
-  public final void test() {
-    Customer wallet = new wallet();
-    menu.setCustomerId(1);
-    assertEquals(1, wallet.getCustomerId());
-    menu.setMenuCat(MenuCat.VEG);
-    assertEquals(MenuCat.VEG, m
-    enu.getMenuCat());
-    menu.setMenuItem("BIRIYANI");
-    assertEquals("BIRIYANI", menu.getMenuItem());
-    menu.setMenuQuantity(1);
-    assertEquals(1, menu.getMenuQuantity());
-    menu.setMenuCost(40);
-    assertEquals(40, menu.getMenuCost());
-    menu.setMenuCalories(90);
-    assertEquals(90, menu.getMenuCalories());
-    menu.setMenuReviews("***");
-    assertEquals("***", menu.getMenuReviews());
-  }
-  /**public final void testMenu() {
-    Menu m = new Menu();
-    Menu m100 = new Menu(100);
-    Menu m101 = new Menu(101);
-    assertNotEquals(m100, null);
-    assertNotEquals(m101, null);
-    assertEquals(m100.getFoodId(),
-        new Menu(100).getFoodId());
-    m101.setFoodId(100);
-    assertNotEquals(m101, new Menu(101));
-    assertEquals(m100.hashCode(),
-        new Menu(100).hashCode());
-    assertEquals(m100, new Menu(100));
-  } */
   /**
    * tests that empty employee list is handled correctly.
    * @param dao mocking the dao class
    */
-   /**
   @Test
-  public final void testListAllEmpty(@Mocked final MenuDAO dao) {
+   public final void testListAllEmpty(@Mocked final VendorDAO dao) {
     new Expectations() {
       {
-        dao.show(); result = new ArrayList<Menu>();
+        dao.show(); result = new ArrayList<Vendor>();
       }
     };
-    new MockUp<MenuFactory>() {
+    new MockUp<VendorFactory>() {
       @Mock
-      MenuDAO dao() {
+       VendorDAO dao() {
         return dao;
       }
     };
-    Menu[] me = MenuFactory.showMenu();
+    Vendor[] me = VendorFactory.showVendor();
     assertEquals(0, me.length);
-  } */
+  }
   /**
    * Tests that a list with some employees is handled correctly.
    * @param dao mocking the dao class
    */
-  /**
   @Test
-  public final void testListAllSome(@Mocked final MenuDAO dao) {
-    final Menu m100 = new Menu(100);
-    final Menu m101 = new Menu(101);
-    final ArrayList<Menu> mn = new ArrayList<Menu>();
+   public final void testListAllSome(@Mocked final VendorDAO dao) {
+    final Vendor m2 = new Vendor(2, "Yogesh", "yogesh2", "9876213217", "YOGESH@GMAIL.COM", "1234A");
+    final Vendor m3 = new Vendor(3, "Shyam", "shyam3", "9876213219", "SHYAM@GMAIL.COM", "12345A");
+    final ArrayList<Vendor> mn = new ArrayList<Vendor>();
     new Expectations() {
       {
-        mn.add(m100);
-        mn.add(m101);
+        mn.add(m2);
+        mn.add(m3);
         dao.show(); result = mn;
       }
     };
-    new MockUp<MenuFactory>() {
+    new MockUp<VendorFactory>() {
       @Mock
-      MenuDAO dao() {
+       VendorDAO dao() {
         return dao;
       }
     };
-    Menu[] mn1 = MenuFactory.showMenu();
+    Vendor[] mn1 = VendorFactory.showVendor();
     assertEquals(2, mn1.length);
-    assertEquals(new Menu(100).getFoodId(),
-        mn1[0].getFoodId());
-    assertEquals(new Menu(101).getFoodId(),
-        mn1[1].getFoodId());
-  }*/
+    assertEquals(2, mn1[0].getVendorId());
+    assertEquals(3, mn1[1].getVendorId());
+    assertEquals("Yogesh", mn1[0].getVendorName());
+    assertEquals("Shyam", mn1[1].getVendorName());
+    assertEquals("yogesh2", mn1[0].getVendorUsername());
+    assertEquals("shyam3", mn1[1].getVendorUsername());
+    assertEquals("9876213217", mn1[0].getVendorNumber());
+    assertEquals("9876213219", mn1[1].getVendorNumber());
+    assertEquals("YOGESH@GMAIL.COM", mn1[0].getVendorEmail());
+    assertEquals("SHYAM@GMAIL.COM", mn1[1].getVendorEmail());
+    assertEquals("1234A", mn1[0].getVendorPassword());
+    assertEquals("12345A", mn1[1].getVendorPassword());
+  }
 }

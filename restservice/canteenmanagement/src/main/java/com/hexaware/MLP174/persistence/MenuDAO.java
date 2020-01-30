@@ -1,5 +1,4 @@
 package com.hexaware.MLP174.persistence;
-
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 import java.util.List;
@@ -12,7 +11,8 @@ public interface MenuDAO {
     /**
      * @return the all the Menu record.
      */
-  @SqlQuery("Select * from FOOD_ITEM")
+  @SqlQuery("Select * from Menu")
     @Mapper(MenuMapper.class)
     List<Menu> show();
 }
+

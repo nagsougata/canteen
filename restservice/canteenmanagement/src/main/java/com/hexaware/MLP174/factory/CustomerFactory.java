@@ -1,4 +1,5 @@
 package com.hexaware.MLP174.factory;
+
 import com.hexaware.MLP174.persistence.CustomerDAO;
 import com.hexaware.MLP174.persistence.DbConnection;
 import java.util.List;
@@ -19,7 +20,7 @@ public class CustomerFactory {
    * Call the data base connection.
    * @return the connection object.
    */
-  private static CustomerDAO dao() {
+  public static CustomerDAO dao() {
     DbConnection db = new DbConnection();
     return db.getConnect().onDemand(CustomerDAO.class);
   }

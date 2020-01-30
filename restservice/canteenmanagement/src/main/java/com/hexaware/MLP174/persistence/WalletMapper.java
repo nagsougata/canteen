@@ -31,3 +31,4 @@ public class WalletMapper implements ResultSetMapper<Wallet> {
     return new Wallet(rs.getInt("WAL_ID"), wtype, rs.getDouble("WAL_AMOUNT"), rs.getInt("CUS_ID"));
   }
 }
+

@@ -20,7 +20,7 @@ public class MenuFactory {
    * Call the data base connection.
    * @return the connection object.
    */
-  private static MenuDAO dao() {
+  public static MenuDAO dao() {
     DbConnection db = new DbConnection();
     return db.getConnect().onDemand(MenuDAO.class);
   }
@@ -33,3 +33,4 @@ public class MenuFactory {
     return menu.toArray(new Menu[menu.size()]);
   }
 }
+

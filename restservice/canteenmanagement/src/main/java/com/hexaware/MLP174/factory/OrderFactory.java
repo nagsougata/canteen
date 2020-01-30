@@ -1,7 +1,9 @@
 package com.hexaware.MLP174.factory;
+
 import com.hexaware.MLP174.persistence.OrderDAO;
 import com.hexaware.MLP174.persistence.DbConnection;
 import java.util.List;
+import com.hexaware.MLP174.model.Customer;
 import com.hexaware.MLP174.model.Menu;
 import com.hexaware.MLP174.model.Orders;
 import com.hexaware.MLP174.model.Wallet;
@@ -23,10 +25,19 @@ public class OrderFactory {
    * Call the data base connection.
    * @return the connection object.
    */
-  private static OrderDAO dao() {
+  public static OrderDAO dao() {
     DbConnection db = new DbConnection();
     return db.getConnect().onDemand(OrderDAO.class);
   }
+    /**
+     * Call the data base connection.
+     *@param cusDOB use to start cusDOB
+     *@return the array of CUSTOMER object.
+     */
+  //    public static Customer showDOB(final Date cusDOB) {
+  //    Customer customer = dao().findByCustomerDOB(cusDOB);
+  //    return customer;
+  //  }
   /**
    * Call the data base connection.
    * @return the array of menu object.
@@ -112,16 +123,26 @@ public class OrderFactory {
    */
   public static String cancelOrder(final int orderId, final int custId, final String status) {
     Orders order = dao().findByOrderId(orderId);
+    int customerId = order.getCustomerId();
+    OrderStatus ostatus = order.getOrderStatus();
     String result = "";
     if (order != null) {
-      if (status.equals("YES")) {
-        String st = "REJECTED";
-        dao().acceptOrReject(st, orderId);
-        double billAmount = order.getOrderTotalamount();
-        WalletType type = order.getWalletType();
-        billAmount = billAmount - (billAmount / 10);
-        dao().refundAmount(billAmount, type, custId);
-        result = ("Order Cancelled Successfully and amount refundued to " + type);
+      if (ostatus == OrderStatus.PENDING) {
+        if (customerId == custId) {
+          if (status.equals("YES")) {
+            String st = "REJECTED";
+            dao().acceptOrReject(st, orderId);
+            double billAmount = order.getOrderTotalamount();
+            WalletType type = order.getWalletType();
+            billAmount = billAmount - (billAmount / 10);
+            dao().refundAmount(billAmount, type, custId);
+            result = ("Order Cancelled Successfully and amount refundued to " + type);
+          }
+        } else {
+          result = "You are unauthorized to cancel this order...";
+        }
+      } else {
+        result = "You cannot cancel this order..";
       }
     } else {
       result = "Invalid OrderId...";
@@ -135,6 +156,7 @@ public class OrderFactory {
    */
   public static String placeOrder(final Orders order) {
     Menu menu = dao().findByMenuId(order.getMenuId());
+    Customer customer = dao().findByCustomerId(order.getCustomerId());
     Wallet wallet = dao().getWalletInfo(order.getWalletType(), order.getCustomerId());
     System.out.println(wallet.getWalletAmount());
     double walAmount = wallet.getWalletAmount();
@@ -148,15 +170,43 @@ public class OrderFactory {
       return "Insufficient Funds...";
     } else if (diffDays < 0) {
       return "order cannot be placed for previous day";
-    } else {
+    } 
       double diff = walAmount - totalAmount;
       System.out.println("Price is  " + menu.getMenuCost());
       order.setOrderStatus(OrderStatus.PENDING);
       order.setOrderTotalamount(totalAmount);
       dao().placeOrder(order);
       dao().updateBalance(diff, order.getWalletType(), order.getCustomerId());
+      if(today.getMonth() == customer.getCustomerDOB().getMonth()) {
+        System.out.println("its your Birthday month  ..........");
+        System.out.println("ur getting special discount of 10%");
+        double dis = totalAmount-(totalAmount*0.10);
+        double dif = walAmount-dis;
+        //System.out.println("now ur getting discount " + dis);
+        order.setOrderStatus(OrderStatus.PENDING);
+        order.setOrderTotalamount(dis);
+        dao().placeOrder(order);
+        dao().updateBalance(dif, order.getWalletType(), order.getCustomerId());
+        System.out.println("discount is : " + dis );
+      } else {
+        System.out.println("no birthday in this month");
+      }
+        if(today.getMonth() == customer.getCustomerDOB().getMonth() && totalAmount >=500) {
+        System.out.println("its your Birthday month  ..........");
+        System.out.println("ur are getting 5 percent discount of 5% on all orders placed");
+        double dis1 = totalAmount - (totalAmount*0.5);
+        double dif = walAmount - dis1;
+        //System.out.println("ur are getting discount + ",dis1);
+        order.setOrderStatus(OrderStatus.PENDING);
+        order.setOrderTotalamount(dis1);
+        dao().placeOrder(order);
+        dao().updateBalance(dif, order.getWalletType(), order.getCustomerId());
+        System.out.println("total cash back "+dis1);
+      } else {
+        System.out.println(" if no birthday then no discount");
+      }
       return "Order Placed Successfully...";
     }
   }
-}
+
 
