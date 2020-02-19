@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OrderFactory.java</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <link rel='stylesheet' type='text/css' href='../../../../coverage.css'/>
+  <link rel='shortcut icon' type='image/png' href='../../../../logo.png'/>
+  <script type='text/javascript' src='../../../../coverage.js'></script>
+  <script type='text/javascript' src='../../../../prettify.js'></script>
+</head>
+<body onload='prettyPrint()'>
+  <table cellpadding='0' cellspacing='1'>
+    <caption>canteenmanagement\src\main\java\com\hexaware\MLP174\factory\OrderFactory.java</caption>
+    <tr>
+      <td class='line'>1</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>package com.hexaware.MLP174.factory;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import com.hexaware.MLP174.persistence.OrderDAO;
+import com.hexaware.MLP174.persistence.DbConnection;
+import java.util.List;
+import com.hexaware.MLP174.model.Menu;
+import com.hexaware.MLP174.model.Orders;
+import com.hexaware.MLP174.model.Wallet;
+import com.hexaware.MLP174.model.WalletType;
+import com.hexaware.MLP174.model.OrderStatus;
+import java.util.Date;</div><span>import ...</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>/**
+ * MenuFactory class used to fetch menu data from database.
+ * @author hexware
+ */</div><span>/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>16</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>public class OrderFactory {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   *  Protected constructor.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>20</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l20s0'>  protected OrderFactory() {</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testConstructor: 38</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>22</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l22s0'>  }</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testConstructor: 38</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * Call the data base connection.
+   * @return the connection object.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>27</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public static OrderDAO dao() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>28</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l28s0'>    DbConnection db = new DbConnection();</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testConstructor: 39</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>29</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l29s0'>    return db.getConnect().onDemand(OrderDAO.class);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testConstructor: 39</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>30</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * Call the data base connection.
+   * @return the array of menu object.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>35</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public static Orders[] showOrder() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>36</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l36s0'>    List&lt;Orders> order = dao().show();</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testListAllSome: 91</li>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testListAllEmpty: 58</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>37</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l37s0'>    return order.toArray(new Orders[order.size()]);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testListAllSome: 91</li>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testListAllEmpty: 58</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>38</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * Show Customer Orders History.
+   * @param custId for pending orders.
+   * @return the array of order object.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>44</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public static Orders[] showCustomerHistory(final int custId) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>45</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l45s0'>    List&lt;Orders> order = dao().customerHistory(custId);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testCustomerHistory: 347, 348</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>46</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l46s0'>    return order.toArray(new Orders[order.size()]);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testCustomerHistory: 347, 348</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>47</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * Show Vendor Orders History.
+   * @param vendId for pending orders.
+   * @return the array of order object.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>53</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public static Orders[] showVendorHistory(final int vendId) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>54</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l54s0'>    List&lt;Orders> order = dao().vendorHistory(vendId);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testVendorHistory: 300, 301</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>55</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l55s0'>    return order.toArray(new Orders[order.size()]);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testVendorHistory: 300, 301</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>56</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * Show Customer Pending Orders.
+   * @param custId for pending orders.
+   * @return the array of order object.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>62</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public static Orders[] showpendingCustomerOrders(final int custId) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>63</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l63s0'>    List&lt;Orders> order = dao().pendingCustomer(custId);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testpendingCustomer: 425, 426</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>64</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l64s0'>    return order.toArray(new Orders[order.size()]);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testpendingCustomer: 425, 426</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>65</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+   * Show Customer Pending Orders.
+   * @param vendId for pending orders.
+   * @return the array of order object.
+   */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>71</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public static Orders[] showpendingVendorOrders(final int vendId) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>72</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l72s0'>    List&lt;Orders> order = dao().pendingVendor(vendId);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testpendingVendor: 386, 387</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>73</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l73s0'>    return order.toArray(new Orders[order.size()]);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testpendingVendor: 386, 387</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>74</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * Show Vendor Orders History.
+   * @param orderId for accept or reject.
+   * @param vendorId for accept or reject.
+   * @param status for changing status.
+   * @return the array of order object.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>82</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public static String acceptOrRejectOrder(final int orderId, final int vendorId, final String status) {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>4</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#55aa00' onclick='hidePath()'>Path coverage: 4/6</span>
+        <span class='covered' onclick="showPath(this,'l83s0 l85s0 l103s0 l105s0')">A: 1</span>
+        <span class='covered' onclick="showPath(this,'l83s0 l85s0 l86s0 l100s0 l105s0')">B: 1</span>
+        <span class='uncovered' onclick="showPath(this,'l83s0 l85s0 l86s0 l87s0 l91s0 l105s0')">C: 0</span>
+        <span class='covered' onclick="showPath(this,'l83s0 l85s0 l86s0 l87s0 l91s0 l92s0 l105s0')">D: 1</span>
+        <span class='covered' onclick="showPath(this,'l83s0 l85s0 l86s0 l87s0 l88s0 l91s0 l105s0')">E: 1</span>
+        <span class='uncovered' onclick="showPath(this,'l83s0 l85s0 l86s0 l87s0 l88s0 l91s0 l92s0 l105s0')">F: 0</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>83</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l83s0'>    Orders order = dao().findByOrderId(orderId);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 145, 147, 149, 151</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>84</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l84s0'>    String result = "";</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 145, 147, 149, 151</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>85</td><td class='count'>4</td>
+      <td><pre class='prettyprint jmp'>    <span id='l85s0' title='Executions: 4' class='covered cp' onclick='showHide(this,0)'>if (order != null)</span> {</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 145, 147, 149, 151</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>86</td><td class='count'>3</td>
+      <td><pre class='prettyprint jmp'>      <span id='l86s0' title='Executions: 3' class='covered cp' onclick='showHide(this,0)'>if (order.getVendorId() == vendorId)</span> {</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 145, 147, 149</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>87</td><td class='count'>2</td>
+      <td><pre class='prettyprint jmp'>        <span id='l87s0' title='Executions: 2' class='covered cp' onclick='showHide(this,0)'>if (status.equals("ACCEPTED"))</span> {</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 145, 147</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>88</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l88s0'>          dao().acceptOrReject(status, orderId);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 145</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>89</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l89s0'>          result = "Order Accepted Successfully...";</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 145</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>90</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>91</td><td class='count'>2</td>
+      <td><pre class='prettyprint jmp'>        <span id='l91s0' title='Executions: 2' class='covered cp' onclick='showHide(this,0)'>if (status.equals("REJECTED"))</span> {</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 145, 147</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>92</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l92s0'>          dao().acceptOrReject(status, orderId);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 147</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>93</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l93s0'>          WalletType type = order.getWalletType();</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 147</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>94</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l94s0'>          int custId = order.getCustomerId();</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 147</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>95</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l95s0'>          double billAmount = order.getOrderTotalamount();</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 147</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>96</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l96s0'>          dao().refundAmount(billAmount, type, custId);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 147</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>97</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l97s0'>          result = "Order Rejected and Amount Refunded...";</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 147</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>98</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l98s0'>        }</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 147</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>99</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      } else {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>100</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l100s0'>        result = "You are Unauthorized Vendor for this order...";</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 149</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>101</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>102</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    } else {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>103</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l103s0'>      result = "Invalid OrderId...";</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 151</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>104</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>105</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l105s0'>    return result;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testAcceptOrReject: 145, 147, 149, 151</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>106</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>   /**
+   * Show Vendor Orders History.
+   * @param orderId for accept or reject.
+   * @param custId for accept or reject.
+   * @param status for changing status.
+   * @return the array of order object.
+   */</div><span>   /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>114</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public static String cancelOrder(final int orderId, final int custId, final String status) {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>3</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#669900' onclick='hidePath()'>Path coverage: 3/5</span>
+        <span class='uncovered' onclick="showPath(this,'l115s0 l119s0 l138s0 l140s0')">A: 0</span>
+        <span class='covered' onclick="showPath(this,'l115s0 l119s0 l120s0 l135s0 l140s0')">B: 1</span>
+        <span class='covered' onclick="showPath(this,'l115s0 l119s0 l120s0 l121s0 l132s0 l140s0')">C: 1</span>
+        <span class='uncovered' onclick="showPath(this,'l115s0 l119s0 l120s0 l121s0 l122s0 l140s0')">D: 0</span>
+        <span class='covered' onclick="showPath(this,'l115s0 l119s0 l120s0 l121s0 l122s0 l123s0 l140s0')">E: 1</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>115</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l115s0'>    Orders order = dao().findByOrderId(orderId);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 180, 182, 184</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>116</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l116s0'>    int customerId = order.getCustomerId();</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 180, 182, 184</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>117</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l117s0'>    OrderStatus ostatus = order.getOrderStatus();</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 180, 182, 184</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>118</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l118s0'>    String result = "";</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 180, 182, 184</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>119</td><td class='count'>3</td>
+      <td><pre class='prettyprint jmp'>    <span id='l119s0' title='Executions: 3' class='covered cp' onclick='showHide(this,0)'>if (order != null)</span> {</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 180, 182, 184</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>120</td><td class='count'>3</td>
+      <td><pre class='prettyprint jmp'>      <span id='l120s0' title='Executions: 3' class='covered cp' onclick='showHide(this,0)'>if (ostatus == OrderStatus.PENDING)</span> {</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 180, 182, 184</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>121</td><td class='count'>2</td>
+      <td><pre class='prettyprint jmp'>        <span id='l121s0' title='Executions: 2' class='covered cp' onclick='showHide(this,0)'>if (customerId == custId)</span> {</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 180, 182</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>122</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>          <span id='l122s0' title='Executions: 1' class='covered cp' onclick='showHide(this,0)'>if (status.equals("YES"))</span> {</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 180</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>123</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l123s0'>            String st = "REJECTED";</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 180</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>124</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l124s0'>            dao().acceptOrReject(st, orderId);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 180</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>125</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l125s0'>            double billAmount = order.getOrderTotalamount();</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 180</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>126</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l126s0'>            WalletType type = order.getWalletType();</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 180</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>127</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l127s0'>            billAmount = billAmount - (billAmount / 10);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 180</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>128</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l128s0'>            dao().refundAmount(billAmount, type, custId);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 180</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>129</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l129s0'>            result = ("Order Cancelled Successfully and amount refundued to " + type);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 180</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>130</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l130s0'>          }</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 180</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>131</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        } else {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>132</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l132s0'>          result = "You are unauthorized to cancel this order...";</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 182</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>133</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>134</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      } else {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>135</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l135s0'>        result = "You cannot cancel this order..";</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 184</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>136</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>137</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    } else {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>138</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l138s0'>      result = "Invalid OrderId...";</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>139</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>140</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l140s0'>    return result;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testcancelOrder: 180, 182, 184</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>141</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * Place order for customer.
+   * @param order for accepting order details.
+   * @return order status.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>147</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public static String placeOrder(final Orders order) {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>3</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 3/3</span>
+        <span class='covered' onclick="showPath(this,'l148s0 l158s0 l159s0')">A: 1</span>
+        <span class='covered' onclick="showPath(this,'l148s0 l158s0 l160s0 l161s0')">B: 1</span>
+        <span class='covered' onclick="showPath(this,'l148s0 l158s0 l160s0 l163s0 l169s0')">C: 1</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>148</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l148s0'>    Menu menu = dao().findByMenuId(order.getMenuId());</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251, 253, 255</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>149</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l149s0'>    Wallet wallet = dao().getWalletInfo(order.getWalletType(), order.getCustomerId());</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251, 253, 255</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>150</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l150s0'>    System.out.println(wallet.getWalletAmount());</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251, 253, 255</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>151</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l151s0'>    double walAmount = wallet.getWalletAmount();</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251, 253, 255</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>152</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l152s0'>    double price = menu.getMenuCost();</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251, 253, 255</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>153</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l153s0'>    Date today = new Date();</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251, 253, 255</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>154</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l154s0'>    System.out.println(order.getOrderDate());</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251, 253, 255</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>155</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l155s0'>    long diffTime = order.getOrderDate().getTime() - today.getTime();</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251, 253, 255</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>156</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l156s0'>    long diffDays = diffTime / (60 * 60 * 1000 * 24);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251, 253, 255</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>157</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l157s0'>    double totalAmount = price * order.getOrderQuantity();</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251, 253, 255</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>158</td><td class='count'>3</td>
+      <td><pre class='prettyprint jmp'>    <span id='l158s0' title='Executions: 3' class='covered cp' onclick='showHide(this,0)'>if (walAmount &lt; totalAmount)</span> {</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251, 253, 255</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>159</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l159s0'>      return "Insufficient Funds...";</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 253</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>160</td><td class='count'>2</td>
+      <td><pre class='prettyprint jmp'>    <span id='l160s0' title='Executions: 2' class='covered cp' onclick='showHide(this,0)'>}</span> else if (diffDays &lt; 0) {</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251, 255</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>161</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l161s0'>      return "order cannot be placed for previous day";</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 255</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>162</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    } else {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>163</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l163s0'>      double diff = walAmount - totalAmount;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>164</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l164s0'>      System.out.println("Price is  " + menu.getMenuCost());</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>165</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l165s0'>      order.setOrderStatus(OrderStatus.PENDING);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>166</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l166s0'>      order.setOrderTotalamount(totalAmount);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>167</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l167s0'>      dao().placeOrder(order);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>168</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l168s0'>      dao().updateBalance(diff, order.getWalletType(), order.getCustomerId());</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>169</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l169s0'>      return "Order Placed Successfully...";</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.MLP174.factory.OrderFactoryTest#testplaceOrder: 251</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>170</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>171</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>172</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+  </table>
+</body>
+</html>

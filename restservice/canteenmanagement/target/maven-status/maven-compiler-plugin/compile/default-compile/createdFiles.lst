@@ -9,8 +9,10 @@ com\hexaware\MLP174\util\FTPApplication.class
 com\hexaware\MLP174\persistence\MenuMapper.class
 com\hexaware\MLP174\util\CORSFilter.class
 com\hexaware\MLP174\model\Wallet.class
+com\hexaware\MLP174\util\VendorRest.class
 com\hexaware\MLP174\model\WalletType.class
 com\hexaware\MLP174\persistence\VendorMapper.class
+com\hexaware\MLP174\util\OrderRest.class
 com\hexaware\MLP174\persistence\DbConnection.class
 com\hexaware\MLP174\util\MenuRest.class
 com\hexaware\MLP174\factory\VendorFactory.class
@@ -22,7 +24,9 @@ com\hexaware\MLP174\persistence\CustomerMapper.class
 com\hexaware\MLP174\model\Customer.class
 com\hexaware\MLP174\model\Vendor.class
 com\hexaware\MLP174\util\CliMain.class
+com\hexaware\MLP174\util\CustomerRest.class
 com\hexaware\MLP174\factory\CustomerFactory.class
 com\hexaware\MLP174\factory\MenuFactory.class
+com\hexaware\MLP174\util\WalletRest.class
 com\hexaware\MLP174\model\MenuCat.class
 com\hexaware\MLP174\model\Menu.class

@@ -1,0 +1,71 @@
+<div>
+<h5>
+Welcome {{userName}} 
+</h5>
+</div>
+<style>
+    .button {
+     border-radius: 4px;
+     background-color: rgb(133, 87, 112);
+     font-family: cursive;
+     border: none;
+     color: #FFFFFF;
+     text-align: center;
+     font-size: 29px;
+     padding: 10px;
+     height: 50px;
+     width: 275px;
+     box-shadow: 0 9px #999;
+     transition: all 0.5s;
+     cursor: pointer;
+     margin: 5px;
+     transition: width 2s
+     height 4s;
+   }
+   button:hover {
+  width: 300px;
+  height: 100px
+}
+  
+</style>   
+<body width = "40%" height ="60%" margin="0" background = "https://image.freepik.com/free-vector/rolling-pin-table-with-flour-vector_1441-3759.jpg"
+style="background-repeat: no-repeat" style = "background-size: 1350px">
+<app-customer-info></app-customer-info> 
+<h6> 
+<a  [routerLink]="['/dashBoard',
+{outlets: {'data': ['placeOrder']}}]">
+<button class="button"><span>Place Order </span></button></a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a  [routerLink]="['/dashBoard',
+{outlets: {'data': ['customerOrderHistory']}}]">
+<button class="button"><span>Order History </span></button></a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a  [routerLink]="['/dashBoard',
+{outlets: {'data': ['wallet']}}]">
+<button class="button"><span>Wallet </span></button></a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a  [routerLink]="['/dashBoard',
+{outlets: {'data': ['customerPending']}}]">
+<button class="button"><span>Customer Pending  </span></button></a> &nbsp;&nbsp;&nbsp;&nbsp;
+</h6>
+
+  <a  [routerLink]="['/index',
+  {outlets: {'data': ['Logout']}}]">
+  <button class="Logout" style="position: absolute;
+  top: 8px;
+  right: 16px;
+  border-radius: 4px;
+   background-color: rgb(224, 15, 15);
+   font-family: cursive;
+   border: none;
+   color: #FFFFFF;
+   text-align: center;
+   font-size: 20px;
+   padding: 10px;
+   height: 50px;
+   width: 100px;
+   box-shadow: 0 9px #999;
+   transition: all 0.5s;
+   cursor: pointer;
+   margin: 5px;">Home</button></a> &nbsp;&nbsp;&nbsp;&nbsp;
+
+
+ <router-outlet name='data'></router-outlet>
+ <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>><br/><br/><br/><br/><br/>

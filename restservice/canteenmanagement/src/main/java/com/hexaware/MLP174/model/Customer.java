@@ -1,6 +1,6 @@
 package com.hexaware.MLP174.model;
 import java.util.Objects;
-import java.util.Date;
+
 /**
  * Menu class used to display menu information.
  * @author hexware
@@ -36,10 +36,6 @@ public class Customer {
  */
   private String customerUsername;
   /**
- * customerDOB to store date of birth.
- */
-  private Date customerDOB;
-  /**
    * Default Constructor.
    */
   public Customer() {
@@ -54,12 +50,11 @@ public class Customer {
  * @param argCustomerAddress to initialize food Rating.
  * @param argCustomerPassword to initialize food Rating.
  * @param argCustomerUsername to initialize food Rating.
- * @param argCustomerDOB to initialize food Rating.
  * used to get details through constructor.
  */
   public Customer(final int argCustomerId, final String argCustomerName, final String argCustomerEmail,
         final String argCustomerNumber, final String argCustomerAddress, final String argCustomerPassword,
-      final String argCustomerUsername,  final Date argCustomerDOB) {
+      final String argCustomerUsername) {
     this.customerId = argCustomerId;
     this.customerName = argCustomerName;
     this.customerEmail = argCustomerEmail;
@@ -67,7 +62,6 @@ public class Customer {
     this.customerAddress = argCustomerAddress;
     this.customerPassword = argCustomerPassword;
     this.customerUsername = argCustomerUsername;
-    this.customerDOB = argCustomerDOB;
   }
   @Override
     public final boolean equals(final Object obj) {
@@ -84,8 +78,7 @@ public class Customer {
         && Objects.equals(customerNumber, customer.customerNumber)
         && Objects.equals(customerAddress, customer.customerAddress)
         && Objects.equals(customerPassword, customer.customerPassword)
-        && Objects.equals(customerUsername, customer.customerUsername) 
-        && Objects.equals(customerDOB, customer.customerDOB)) {
+        && Objects.equals(customerUsername, customer.customerUsername)) {
       return true;
     }
     return false;
@@ -93,12 +86,12 @@ public class Customer {
   @Override
     public final int hashCode() {
     return Objects.hash(customerId, customerId, customerName, customerEmail,
-     customerNumber,  customerAddress, customerPassword, customerUsername, customerDOB);
+     customerNumber,  customerAddress, customerPassword, customerUsername);
   }
   @Override
   public final String toString() {
-    return String.format("%15s %15s %15s %15s %15s %15s %15s %15s", customerId, customerName, customerEmail,
-     customerNumber,  customerAddress, customerPassword, customerUsername, customerDOB);
+    return String.format("%15s %15s %15s %15s %15s %15s %15s", customerId, customerName, customerEmail,
+     customerNumber,  customerAddress, customerPassword, customerUsername);
   }
     /**
      * @return this food ID.
@@ -183,17 +176,5 @@ public class Customer {
    */
   public final void setCustomerUsername(final String argCustomerUsername) {
     this.customerUsername = argCustomerUsername;
-  }
-  /**
-     * @return this date of birth.
-     */
-  public final Date getCustomerDOB() {
-    return customerDOB;
-  }
-  /**
-   * @param argCustomerDOB gets the DATE OF BIRTH.
-   */
-  public final void setCustomerDOB(final Date argCustomerDOB) {
-    this.customerDOB = argCustomerDOB;
   }
 }

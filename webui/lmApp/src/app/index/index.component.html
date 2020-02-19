@@ -1,0 +1,23 @@
+<img>
+<body width = "40%" height ="60%" margin="0" background = "https://www.mccain.com/media/2556/mccain-fries-and-appetizers.jpg"
+style="background-repeat: no-repeat" style = "background-size: 1700px">
+    <img src="https://i.ibb.co/C54wZcF/Free-Sample-By-Wix.jpg"  style="width:150px">
+    <img/>
+    <h1>
+        <p>Foodie Food</p>
+    </h1>
+
+    <h2>
+        <br/>
+   <button  [routerLink]="['/index',
+{outlets: {'data': ['customer-login']}}]">Customer Login </button> &nbsp;&nbsp;&nbsp;&nbsp;
+<button  [routerLink]="['/index',
+{outlets: {'data': ['vendorlogin']}}]">Vendor Login</button> &nbsp;&nbsp;&nbsp;&nbsp;
+
+</h2>
+ 
+
+ <router-outlet name='data'></router-outlet> 
+
+
+ 

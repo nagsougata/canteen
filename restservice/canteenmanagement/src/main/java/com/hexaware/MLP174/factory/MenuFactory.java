@@ -32,5 +32,14 @@ public class MenuFactory {
     List<Menu> menu = dao().show();
     return menu.toArray(new Menu[menu.size()]);
   }
+  /**
+   * Call the data base connection.
+   *@param menuId for reading menudetails.
+   * @return the array of menu object.
+   */
+  public static Menu showMenu(final int menuId) {
+    Menu menu = dao().show(menuId);
+    return menu;
+  }
 }
 

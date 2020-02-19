@@ -1,0 +1,33 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: left;
+    font-family: cursive;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even){background-color: #f2f2f2}
+  tr:nth-child(odd){background-color: #ecb7d4}
+  
+  th {
+    background-color: rgb(133, 87, 112);
+    color: white;
+  }
+  input[type=button]{
+    border-radius: 4px;
+      background-color: rgb(199, 82, 82);
+      border: none;
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 15px;
+      font-family: cursive;
+      height: 40px;
+      width: 100px;
+      box-shadow: 0 9px #999;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 5px;
+    }

@@ -1,0 +1,19 @@
+<p>menu works!</p>
+<table border ="3">
+    <tr>
+        <th>Menu Id</th>
+        <th>Food Category</th>
+        <th>Item Name</th>
+        <th>Quantity</th>
+        <th>Cost</th>
+        <th>Rating</th>
+    </tr>
+        <tr *ngFor="let m of menus | async">
+            <td>{{m.menuId}}</td>
+            <td>{{m.menuCat}}</td>
+            <td>{{m.menuItem}}</td>
+            <td>{{m.menuQuantity}}</td>
+            <td>{{m.menuCost}}</td>
+            <td>{{m.menuRating}}</td>
+        </tr>
+</table>

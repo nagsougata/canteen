@@ -1,0 +1,15 @@
+<p>
+    Login to service happily!!
+</p>
+<h4>
+<form method="post">
+    User Name : 
+    <input type="text" name="userName" [(ngModel)]="userName" /> <br/><br/> 
+    Password : 
+    <input type="text" name="passWord" [(ngModel)]="passWord"  /> <br/><br/> 
+    <input type="button" value="Login" (click)="validate()" />
+</form>
+</h4>
+<p *ngIf="count > 1">
+    <b>Invalid Credentials...</b>
+</p>

@@ -27,6 +27,6 @@ public class CustomerMapper implements ResultSetMapper<Customer> {
     //MenuCat mcat = MenuCat.valueOf(category);
     return new Customer(rs.getInt("CUS_ID"), rs.getString("CUS_NAME"),
     rs.getString("CUS_EMAIL"), rs.getString("CUS_PHNO"), rs.getString("CUS_ADDRESS"),
-    rs.getString("CUS_PASSWORD"), rs.getString("CUS_USERNAME"), rs.getDate("CUS_DOB"));
+    rs.getString("CUS_PASSWORD"), rs.getString("CUS_USERNAME"));
   }
 }

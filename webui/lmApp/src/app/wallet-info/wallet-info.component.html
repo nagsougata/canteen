@@ -1,0 +1,28 @@
+<p>wallet-info works!</p>
+<!-- Customer Id :
+<input type="number" name="customerId"
+[(ngModel)]="customerId" />
+
+<input type="button" value="show" (click)="show()"/>
+<br/><br/>
+wallet Id: {{(wallet | async)?.walletId}}
+<br/><br/>
+wallet Amount: {{(wallet | async)?.walletAmount}}
+<br/><br/>
+wallet Type: {{(wallet | async)?.walletType}}
+<br/><br/> -->
+<table>
+<table border="3">
+    <tr>
+        <th>Wallet ID</th>
+        <th>Wallet Amount</th>
+        <th>Customer ID</th>
+        <th>Wallet Type</th>
+    </tr>
+    <tr *ngFor="let u of wallet | async">
+        <td>{{u.walletId}}</td>
+        <td>{{u.walletAmount}}</td>
+        <td>{{u.customerId}}</td>
+        <td>{{u.walletType}}</td>
+    </tr>
+</table>

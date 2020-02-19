@@ -1,0 +1,57 @@
+<body>
+<input
+type="text"
+class="form-control"
+name="searchString"
+placeholder="Type your favour"
+[(ngModel)]="searchString"
+style="background-color:white;margin-left:auto;margin-right:auto;display:block;margin-top:5%;margin-bottom:1%;height: 30px;
+width: 200px;text-align: center;font-family: cursive;color: black;border-radius: 4px;
+      transition: all 0.5s;font-size: 20px;"
+/>
+<table border="3">
+        <tr>
+            <th>ORDER ID</th>
+            <th>ORDER DATE</th>
+            <th>ORDER TOTALAMOUNT</th>
+            <th>ORDER STATUS</th>
+            <th>ORDER QUANTITY</th>
+            <th>CUSTOMER ID</th>
+            <th>MENU ID</th>
+            <th>VENDOR ID</th>
+            <th>WALLET TYPE</th>
+            <th>ORDER COMMENTS</th>
+            <!-- <th>Cancel Order</th> -->
+            
+
+        </tr>
+        <tr *ngFor="let u of orders | async | customFilter :  {orderId: searchString, orderComments:searchString, walletType:searchString,orderQuantity:searchString}; let i = index">
+            <td>{{u.orderId}}</td>
+            <td>{{u.orderDate}}</td>
+            <td>{{u.orderTotalamount}}</td>
+            <td>{{u.orderStatus}}</td> 
+            <td>{{u.orderQuantity}}</td> 
+            <td>{{u.customerId}}</td>
+            <td>{{u.menuId}}</td>
+            <td>{{u.vendorId}}</td>
+            <td>{{u.walletType}}</td> 
+            <td>{{u.orderComments}}</td> 
+            <!-- <td><input type="button" value="Cancel Order" (click)="cancelOrder(u.orderId, u.customerId)" /> </td> -->
+        </tr>
+    </table>
+</body>
+        <!-- <p>wallet-info works!</p>
+<table border="3">
+    <tr>
+        <th>WalletId</th>
+        <th>WalletType</th>
+        <th>WalletAmount</th>
+        <th>CustomerId</th>
+    </tr>
+    <tr *ngFor="let w of wallet | async">
+        <td>{{w.walletId}}</td>
+        <td>{{w.walletType}}</td>
+        <td>{{w.walletAmount}}</td>
+        <td>{{w.customerId}}</td>
+    </tr>
+</table> -->

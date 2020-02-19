@@ -1,0 +1,66 @@
+button{
+  
+  border: none;
+  color:white;
+  padding: 15px 32px;
+  background-color: rgb(221, 58, 107);
+  text-align: center;
+  text-decoration: none;
+  display: inline-table;
+  font-family: cursive;
+  font-size: 30px;
+  margin: 40px 20px;
+  box-shadow: 0 9px #999;
+  cursor: pointer;
+  position: relative;
+  left: 350px;
+  top: 15px;
+transition: width 2s;
+  width: 200px;
+  height: 150px;
+  transition: width 2s, height 2s, transform 2s;
+    
+  }
+  button:hover {
+    width: 200px;
+  height: 200px;
+  transform: rotate(360deg);
+  }
+  
+ 
+    
+
+h1{
+    text-align: center;
+    color:black;
+    font-family: cursive;
+    font-size: 50px;
+  width: 400px;
+  height: 100px;
+  font-weight: bold;
+  position: relative;
+  animation: mymove 20s infinite;
+  
+}
+
+
+@keyframes mymove {
+  0%   {color: rgb(190, 19, 212); left:25px;}
+  50%  {color: rgba(173, 50, 221, 0.705); left:1000px;}
+  100% {color:rgb(131, 46, 241); left:500px;}
+}
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+div {
+  width: 100px;
+  height: 100px;
+  background: red;
+  transition: width 2s;
+}
+
+div:hover {
+  width: 300px;
+}

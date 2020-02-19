@@ -1,0 +1,51 @@
+<body>
+    <input
+    type="text"
+    class="form-control"
+    name="searchString"
+    placeholder="Type your favour"
+    [(ngModel)]="searchString"
+    style="background-color:white;margin-left:auto;margin-right:auto;display:block;margin-top:5%;margin-bottom:1%;height: 30px;
+    width: 200px;text-align: center;font-family: cursive;color: black;border-radius: 4px;
+          transition: all 0.5s;font-size: 20px;"
+  />
+<table border="3">
+        <tr>
+            <th>ORDER ID</th>
+            <th>ORDER DATE</th>
+            <th>ORDER TOTALAMOUNT</th>
+            <th>ORDER STATUS</th>
+            <th>ORDER QUANTITY</th>
+            <th>CUSTOMER ID</th>
+            <th>MENU ID</th>
+            <th>VENDOR ID</th>
+            <th>WALLET TYPE</th>
+            <th>ORDER COMMENTS</th>
+            <th>CANCEL ORDER</th>
+            <th>SELECT</th>
+            
+
+        </tr>
+        <tr *ngFor="let u of orders | async | customFilter :  {orderId: searchString, orderComments:searchString, walletType:searchString,orderQuantity:searchString}; let i = index">
+            <td>{{u.orderId}}</td>
+            <td>{{u.orderDate}}</td>
+            <td>{{u.orderTotalamount}}</td>
+            <td>{{u.orderStatus}}</td> 
+            <td>{{u.orderQuantity}}</td> 
+            <td>{{u.customerId}}</td>
+            <td>{{u.menuId}}</td>
+            <td>{{u.vendorId}}</td>
+            <td>{{u.walletType}}</td> 
+            <td>{{u.orderComments}}</td>
+            <td><input type="button" value="Cancel Order" (click)="cancelOrder(u.orderId, u.customerId)" /> </td>
+            <td>
+                <input type="checkbox" name="chkOrdid" (change)="checkIfAllSelected(u.orderId)">
+                {{u.orderId}}
+            </td>
+        </tr>
+    </table>
+</body>
+
+        <input type="button" style="background-color:rgb(199, 82, 82);margin-left:auto;margin-right:auto;display:block;margin-top:7.5%;margin-bottom:1%;height: 60px;
+        width: 160px; font-size: 25px;" value="Cancel All" (click)="cancelMe()" />
+ 
